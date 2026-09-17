@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A Little World Called Briella 💗</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,sans-serif;background:#080714;color:white;overflow-x:hidden}
+#stars{position:fixed;inset:0;background:radial-gradient(circle at 50% 25%,#30134d,#120b27 45%,#05050d 100%);z-index:-2}
+.star{position:fixed;width:3px;height:3px;background:white;border-radius:50%;animation:twinkle 2.5s infinite alternate}
+@keyframes twinkle{to{opacity:.15;transform:scale(.4)}}
+.container{max-width:850px;margin:auto;padding:20px}
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:45px 0}
+.card{width:100%;padding:38px 24px;border:1px solid #ffffff29;background:#ffffff12;backdrop-filter:blur(15px);border-radius:30px;box-shadow:0 25px 90px #0008}
+.kicker{text-transform:uppercase;letter-spacing:4px;font-size:11px;color:#dcb8ef}
+h1{font-size:clamp(46px,12vw,90px);margin:18px 0;background:linear-gradient(90deg,#fff,#f5b9df,#fff);-webkit-background-clip:text;color:transparent}
+h2{font-size:clamp(30px,7vw,48px);margin-bottom:18px}p{color:#ead9e8;line-height:1.75;font-size:17px}
+button{border:0;border-radius:999px;padding:14px 24px;margin-top:28px;font-weight:800;font-size:15px;color:#401b45;background:#fff;box-shadow:0 10px 30px #0004;cursor:pointer}
+.hidden{display:none}.fade{animation:fade .8s ease}
+@keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.bigHeart{font-size:72px;animation:pulse 1.7s infinite}@keyframes pulse{50%{transform:scale(1.13)}}
+.starsGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:28px}
+.starBtn{min-height:115px;padding:20px;border-radius:24px;background:#ffffff0f;border:1px solid #ffffff1f;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer}
+.starBtn:hover{background:#ffffff1c}.starBtn .icon{font-size:35px;margin-bottom:8px}
+.revealText{margin-top:20px;min-height:28px;color:#ffd8ef;font-weight:600}
+.moments{display:grid;gap:14px;margin-top:25px}.moment{text-align:left;padding:20px;border-radius:22px;background:#ffffff0f;border-left:3px solid #e7a6d2}.moment b{display:block;margin-bottom:6px}
+.heartRain{position:absolute;inset:0;pointer-events:none}.rainHeart{position:absolute;bottom:-30px;animation:rise 5s linear forwards}
+@keyframes rise{to{transform:translateY(-700px) rotate(25deg);opacity:0}}
+.small{font-size:13px;opacity:.55;margin-top:24px}.finalBox{position:relative;overflow:hidden}
+@media(max-width:500px){.card{padding:32px 18px}}
+</style>
+</head>
+<body><div id="stars"></div>
+<script>
+for(let i=0;i<90;i++){let s=document.createElement("div");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.animationDelay=Math.random()*3+"s";s.style.opacity=.2+Math.random()*.7;document.getElementById("stars").appendChild(s)}
+</script>
+<div class="container">
+<section><div class="card"><div class="kicker">A little world</div><div class="bigHeart">💗</div><h1>Briella</h1><p>Some people become special so quietly that you don't even notice it happening.</p><button onclick="openIntro()">Enter ✨</button><div id="intro" class="hidden fade" style="margin-top:25px"><p>So I thought I'd make you a tiny world of my own… just for you.</p><button onclick="go('sky')">Keep going →</button></div></div></section>
+<section id="sky"><div class="card"><div class="kicker">If you ever forget</div><h2>You are genuinely special. 🫶🏽</h2><p>Not because of one thing. It's the little things—the way you talk, the way you care, your energy, and the way our conversations somehow keep getting better.</p><button onclick="go('starsSection')">Tap the stars ⭐</button></div></section>
+<section id="starsSection"><div class="card"><div class="kicker">A few reminders</div><h2>Pick a star ⭐</h2><p>Go on… tap them. I put a little message behind each one.</p><div class="starsGrid">
+<div class="starBtn" onclick="reveal('r1')"><div class="icon">✨</div><b>Star One</b></div>
+<div class="starBtn" onclick="reveal('r2')"><div class="icon">🌙</div><b>Star Two</b></div>
+<div class="starBtn" onclick="reveal('r3')"><div class="icon">💫</div><b>Star Three</b></div>
+<div class="starBtn" onclick="reveal('r4')"><div class="icon">💗</div><b>Star Four</b></div></div>
+<div id="reveal" class="revealText"></div><button onclick="go('moments')">There's more 👀</button></div></section>
+<section id="moments"><div class="card"><div class="kicker">Our little thing</div><h2>The part I like most 🫶🏽</h2><div class="moments">
+<div class="moment"><b>Getting to know you</b><p>I genuinely like learning the little things about you that most people don't notice.</p></div>
+<div class="moment"><b>Our conversations</b><p>Even the random ones. Somehow you make them feel different.</p></div>
+<div class="moment"><b>The way you care</b><p>You said you like when I ask about your day. Just know I ask because I actually want to know.</p></div></div><button onclick="go('last')">Okay… one last thing</button></div></section>
+<section id="last"><div class="card finalBox"><div id="heartRain" class="heartRain"></div><div class="bigHeart">💌</div><div class="kicker">One last thing</div><h2>If I had to choose…</h2><p>If I had to choose one person to keep getting to know, laughing with, annoying a little, and making memories with…</p><button onclick="finalReveal()">You already know 👀</button><div id="final" class="hidden fade" style="margin-top:28px"><p style="font-size:23px"><b>It would be you, Briella. 🥹💕</b></p><p style="margin-top:14px">I just wanted you to have something that reminds you how appreciated you are.</p><div class="bigHeart" style="margin-top:20px">💗</div><p class="small">Made with way too much effort 😭🫶🏽</p></div></div></section>
+</div>
+<script>
+const messages={r1:"Your smile is actually dangerous 😭💕",r2:"I love how easy it is to talk to you.",r3:"You’re prettier than you give yourself credit for 👀",r4:"And yes… I still think you’re ridiculously beautiful."};
+function openIntro(){document.getElementById("intro").classList.remove("hidden")}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+function reveal(id){document.getElementById("reveal").textContent=messages[id]}
+function finalReveal(){document.getElementById("final").classList.remove("hidden");for(let i=0;i<24;i++){let h=document.createElement("span");h.className="rainHeart";h.textContent=Math.random()>.5?"💗":"✨";h.style.left=Math.random()*100+"%";h.style.animationDelay=Math.random()*1.5+"s";h.style.fontSize=14+Math.random()*20+"px";document.getElementById("heartRain").appendChild(h)}}
+</script></body></html>
